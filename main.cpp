@@ -25,17 +25,38 @@ This was written by call number 1.
  This ALSO written by call number 1.*/
 void R1_levls(unsigned int max_level, int start_level )
 {   
-    if (max_level > 1)
-    {
-        
-        R1_levls(max_level - 1);
-        for (int i = 0; i < max_level; i++)
+    if (start_level < max_level)
+    { 
+        for (int i = 0; i < start_level; i++)
             cout << ' ';
-        cout << "This was written by call number " << max_level << endl;
+        cout << "This was written by call number " << start_level << endl;
+        R1_levls(max_level, start_level + 1);
+        for (int i = 0; i < start_level; i++)
+            cout << ' ';
+        cout << "This ALSO written by call number " << start_level << endl;
     }
-    else
-        cout << "This was written by call number " << max_level << endl;
+    else 
+    {  
+        for (int i = 0; i < start_level; i++)
+            cout << ' ';
+        cout << "This was written by call number " << start_level << endl;
+        for (int i = 0; i < start_level; i++)
+            cout << ' ';
+        cout << "This ALSO written by call number " << start_level << endl;
+    }
+        
 }
+    // if (max_level > 1)
+    // {
+        
+    //     R1_levls(max_level - 1);
+    //     for (int i = 0; i < max_level; i++)
+    //         cout << ' ';
+    //     cout << "This was written by call number " << max_level << endl;
+    // }
+    // else
+    //     cout << "This was written by call number " << max_level << endl;
+
     
 void R2_Box()
 {
