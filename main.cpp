@@ -11,8 +11,8 @@ int main()
 
     int level = 5, space = 1, write_me_vert = -1234; 
     R1_levls(level);
+    R2_Box("Box:", 2);
     R2_Box("Box:", 3);
-    
     return EXIT_SUCCESS;
 }
 
@@ -54,34 +54,26 @@ void R1_levls(unsigned int max_level, int start_level )
             cout << ' ';
         cout << "This ALSO written by call number " << start_level << endl;
     }
-        
 }
     
 void R2_Box(string prefix, unsigned int levels)
 {
-    if (levels > 1)
-    {  
-        int i;
-        // string str = prefix; 
-        
-        R2_Box(prefix, levels - 1);
-        prefix += char('0' + levels);
-        prefix += '.';
-        for (int i = 1; i <= 9; i++)
+    string temp = prefix;
+
+    for (int i = 1; i <= 9; i++)
+    {
+        temp = prefix + char ('0' + i);
+        temp += '.';
+        if (levels > 1)
         {
-            cout << prefix << char('0' + i) << '.' << endl;
+            R2_Box(temp, levels - 1 );
+            // cout << endl;
         }
-        prefix += (char ('0' + 9) );
-        
+        else 
+        {
+            cout << temp;
+            cout << endl;
+        }
     }
-    else 
-    { 
-        prefix += char('0' + levels);
-        prefix += '.';
-        for (int i = 1; i <= 9; i++)
-        {
-            cout << prefix << char('0' + i) << '.' << endl;
-        }
-        prefix += (char ('0' + 9) );
-    }   
-}
+    
+} 
