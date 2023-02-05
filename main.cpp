@@ -9,9 +9,9 @@ void R3_first_second();
 int main()
 {
 
-    int level = 4, space = 1, write_me_vert = -1234; 
+    int level = 5, space = 1, write_me_vert = -1234; 
     R1_levls(level);
-    R2_Box("Box:", 2);
+    R2_Box("Box:", 3);
     
     return EXIT_SUCCESS;
 }
@@ -60,16 +60,28 @@ void R1_levls(unsigned int max_level, int start_level )
 void R2_Box(string prefix, unsigned int levels)
 {
     if (levels > 1)
-    {   
+    {  
+        int i;
+        // string str = prefix; 
+        
         R2_Box(prefix, levels - 1);
+        prefix += char('0' + levels);
+        prefix += '.';
+        for (int i = 1; i <= 9; i++)
+        {
+            cout << prefix << char('0' + i) << '.' << endl;
+        }
+        prefix += (char ('0' + 9) );
         
     }
     else 
-    {
-    for (unsigned int i = 1; i <= 9; i++)
-    {
-        for(unsigned int j = 1; j <= 9; j++)
-            cout << prefix << i << "." << j << endl;
-    }
-    }
+    { 
+        prefix += char('0' + levels);
+        prefix += '.';
+        for (int i = 1; i <= 9; i++)
+        {
+            cout << prefix << char('0' + i) << '.' << endl;
+        }
+        prefix += (char ('0' + 9) );
+    }   
 }
